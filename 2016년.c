@@ -24,7 +24,7 @@ char* solution(int a, int b) {
     
     char* answer = (char*)malloc(sizeof(arr));
     
-    int final_day[20] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int final_day[12] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     
     int total_day=0;
     
