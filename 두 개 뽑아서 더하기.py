@@ -41,3 +41,34 @@ def solution(a):
         a.insert(wi, xi)
     d.sort()
     return d
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+def solution(numbers):
+    """
+    a = set([1, 1, 3])
+    a = {1, 3}
+    a = {1, 1, 3}
+    a = {1, 3}
+    sorted(a, reverse=True) 내림순정렬
+    sorted(a, reverse=False) 오름순정렬 기본값default
+
+    """
+    i = 0
+    j = 0
+    s  = []
+    for i in range(len(numbers)):
+        print('1a', i, j, s)
+        for j in range(len(numbers)):
+            print('2a', i, j, s)
+            if i < j:
+                print('3aif문 발동', i, j, s)
+                s.append(numbers[i] + numbers[j])
+
+            print('4a두번째루프반복', i, j, s)
+        print('5a첫번째루프반복', i, j, s)
+    print('6a', i, j, s)
+    return sorted(set(s))
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+def solution(numbers): return sorted({numbers[i] + numbers[j] for i in range(len(numbers)) for j in range(len(numbers)) if i < j})
+
+
