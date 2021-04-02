@@ -52,3 +52,23 @@ def solution(board, moves):
                 break
 
     return answer
+
+
+////////////////////
+def solution(board, moves):
+    answer = 0
+    c = []
+    m = 0
+    i = 0
+    for m in moves:
+        for i in range(len(board)):
+            if board[i][m-1] != 0:
+                c.append(board[i][m-1])
+                board[i][m-1] = 0
+                if c[len(c)-2] == c[len(c)-1] and len(c) > 1:
+                    c.pop()
+                    c.pop()
+                    answer += 2
+                break
+    return answer
+
