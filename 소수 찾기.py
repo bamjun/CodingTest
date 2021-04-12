@@ -29,3 +29,29 @@ def solution(n):
                 a[j] = False
 
     return a.count(True) - 2
+#    return [i for i in range(2, (n+1)) if sieve[i]]
+
+
+
+
+
+import math
+def solution3(n):
+    a = [True] * (n+1)
+
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if a[i]:
+            for j in range(i + i, n+1, i):
+                a[j] = False
+
+    return a.count(True) - 2
+
+
+
+def solution2(n):
+    num=set(range(2,n+1))
+
+    for i in range(2,n+1):
+        if i in num:
+            num-=set(range(2*i,n+1,i))
+    return len(num)
