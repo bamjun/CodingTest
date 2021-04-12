@@ -32,7 +32,14 @@ def solution(n):
 #    return [i for i in range(2, (n+1)) if sieve[i]]
 
 
-
+def solution(n):
+    egg = [True] * (n+1)
+    for i in range(2, n+1):
+        for x in range(2, int(i ** 0.5) + 2):
+            if (i % x) == 0:
+                egg[i] = False
+                break
+    return egg.count(True) - 1
 
 
 import math
