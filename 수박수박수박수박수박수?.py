@@ -13,3 +13,6 @@ n	return
 
 
 def solution(n): return '수박' * int(n/2) + '수' if n%2 != 0 else '수박' * int(n/2)
+
+
+def solution5(n): return ('수박' * n)[:n]
