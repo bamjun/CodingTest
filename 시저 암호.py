@@ -36,3 +36,16 @@ def solution(s, n):
             else:
                 answer.append(Alpa[Alpa.index(x) + n])
     return ''.join(answer)
+
+
+def solution(s, n): return ''.join([chr((ord(x) - ord('a') + n) % 26 + ord('a')) if x.islower() else chr((ord(x) - ord('A') + n) % 26 + ord('A')) if x.isupper() else x for x in s ])
+
+>>> l = [1, 2, 3, 4, 5]
+>>> ['yes' if v == 1 else 'no' if v == 2 else 'idle' for v in l]
+['yes', 'no', 'idle', 'idle', 'idle']
+>>> ord('a')
+97
+>>> chr(97)
+'a'
+
+
