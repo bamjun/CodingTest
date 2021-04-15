@@ -13,3 +13,4 @@ arr	return
 """
 
 def solution(a):return a.remove(min(a)) or a if len(a) > 1 else [-1]
+def solution(a):return a.remove(min(a)) or a
