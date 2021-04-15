@@ -13,3 +13,5 @@ num	return
 """
 
 def solution(a):return 'Odd' if a % 2 == 1 else 'Even'
+def evenOrOdd(num):
+    return ["Even", "Odd"][num & 1]
