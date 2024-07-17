@@ -1,39 +1,42 @@
 use std::io::{self, BufRead};
 
-fn bubble_sort_kth_swap(n: usize, k: usize, mut a: Vec<i32>) -> Option<Vec<i32>> {
+fn main() {
+    let stdin = io::stdin();
+    let mut input = String::new();
+
+    // Read the first line containing N and K
+    stdin.read_line(&mut input).expect("Failed to read line");
+    let mut parts = input.split_whitespace();
+    let n: usize = parts.next().unwrap().parse().unwrap();
+    let k: usize = parts.next().unwrap().parse().unwrap();
+
+    // Read the second line containing the array elements
+    input.clear();
+    stdin.read_line(&mut input).expect("Failed to read line");
+    let mut a: Vec<i32> = input.split_whitespace().map(|x| x.parse().unwrap()).collect();
+
+    // Perform bubble sort and track the number of swaps
     let mut swap_count = 0;
-    
+    let mut swapped = true;
+
     for last in (1..n).rev() {
+        if !swapped {
+            break;
+        }
+        swapped = false;
         for i in 0..last {
             if a[i] > a[i + 1] {
                 a.swap(i, i + 1);
                 swap_count += 1;
+                swapped = true;
                 if swap_count == k {
-                    return Some(a);
+                    println!("{}", a.iter().map(|x| x.to_string()).collect::<Vec<_>>().join(" "));
+                    return;
                 }
             }
         }
     }
-    None
-}
 
-fn main() {
-    let stdin = io::stdin();
-    let mut iterator = stdin.lock().lines();
-    
-    let first_line = iterator.next().unwrap().unwrap();
-    let mut parts = first_line.split_whitespace();
-    
-    let n: usize = parts.next().unwrap().parse().unwrap();
-    let k: usize = parts.next().unwrap().parse().unwrap();
-    
-    let second_line = iterator.next().unwrap().unwrap();
-    let a: Vec<i32> = second_line.split_whitespace()
-                                 .map(|x| x.parse().unwrap())
-                                 .collect();
-    
-    match bubble_sort_kth_swap(n, k, a) {
-        Some(result) => println!("{}", result.iter().map(|x| x.to_string()).collect::<Vec<_>>().join(" ")),
-        None => println!("-1"),
-    }
+    // If the number of swaps is less than K, print -1
+    println!("-1");
 }
