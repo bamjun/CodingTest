@@ -5,11 +5,7 @@ fn main() {
 
     io::stdin().read_line(&mut input).expect("n");
 
-    let numbers: Vec<i32> = input
-        .trim()
-        .split_whitespace()
-        .map(|num| num.parse().expect("n"))
-        .collect();
+    let numbers: Vec<i32> = input.trim().split_whitespace().map(|num| num.parse().expect("n")).collect();
 
     let sum = numbers[0] + numbers[1];
 
