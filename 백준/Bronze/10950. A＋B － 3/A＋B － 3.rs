@@ -8,7 +8,7 @@ fn main() {
     for i in 0..n {
         let mut input2 = String::new();
         io::stdin().read_line(&mut input2).expect("failed to read line");
-        let numbers: Vec<i32> = input2.trim().split_whitespace().map(|O| O.parse().expect("failed")).collect();
+        let numbers: Vec<u8> = input2.trim().split_whitespace().map(|O| O.parse().expect("failed")).collect();
         
         println!("{}", numbers[0] + numbers[1]);
     }
