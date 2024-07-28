@@ -6,16 +6,11 @@ fn main() {
     
     while let Some(Ok(line)) = reader.next() {
         let nums: Vec<i32> = line.split_whitespace().map(|I| I.parse().unwrap()).collect();
-        let a = nums[0];
-        let b = nums[1];
-
-
-        if a == 0 && b == 0 {
+        let sum = nums[0] + nums[1];
+        if sum == 0 {
             break;
         }
-        let sum = a + b;
         writeln!(writer, "{}", sum).unwrap();
-
     }
 
     
