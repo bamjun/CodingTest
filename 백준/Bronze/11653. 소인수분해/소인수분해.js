@@ -1,13 +1,25 @@
-const input = Number(require('fs').readFileSync('/dev/stdin').toString().trim());
+const fs = require('fs');
+const input = Number(fs.readFileSync('/dev/stdin').toString().trim());
 
 const getPrimeFactors = (n) => {
-    return Array.from({length:n},(_,i) => i + 2).reduce((acc,cur) => {
-        while(n % cur === 0) {
-            acc.push(cur);
-            n = n/cur;
+    const factors = [];
+    let divisor = 2;
+    
+    while (n >= divisor * divisor) {
+        while (n % divisor === 0) {
+            factors.push(divisor);
+            n = n / divisor;
         }
-        return acc;
-    },[])
+        divisor++;
+    }
+
+    if (n > 1) {
+        factors.push(n);
+    }
+
+    return factors;
 }
 
-getPrimeFactors(input).forEach((ele)=> console.log(ele))
+if (input > 1) {
+    getPrimeFactors(input).forEach((ele) => console.log(ele));
+}
