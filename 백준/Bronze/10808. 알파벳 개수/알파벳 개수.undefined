@@ -1,0 +1,25 @@
+use std::io::{self, Read};
+
+fn main() {
+    // 1) 입력 전체를 읽고 첫 줄만 사용
+    let mut input = String::new();
+    io::stdin().read_to_string(&mut input).unwrap();
+    let s = input.lines().next().unwrap_or("").trim();
+
+    // 2) 알파벳 a~z 카운트 배열
+    let mut cnt = [0u32; 26];
+
+    // 3) 문자 개수 세기 (문제는 소문자만 들어옴)
+    for &b in s.as_bytes() {
+        let idx = (b - b'a') as usize;
+        if idx < 26 {
+            cnt[idx] += 1;
+        }
+    }
+
+    // 4) 공백 구분으로 출력
+    for i in 0..26 {
+        if i > 0 { print!(" "); }
+        print!("{}", cnt[i]);
+    }
+}
