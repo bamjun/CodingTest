@@ -1,0 +1,38 @@
+use std::io::{self, Read};
+
+fn main() {
+    let mut input = String::new();
+    io::stdin().read_to_string(&mut input).unwrap();
+    let mut iter = input.lines();
+
+    let t: usize = iter.next().unwrap().trim().parse().unwrap();
+
+    for _ in 0..t {
+        let s = iter.next().unwrap().trim();
+        let mut count = 0;
+        let mut valid = true;
+
+        for ch in s.chars() {
+            if ch == '(' {
+                count += 1;
+            } else {
+                count -= 1;
+            }
+
+            if count < 0 {
+                valid = false;
+                break;
+            }
+        }
+
+        if count != 0 {
+            valid = false;
+        }
+
+        if valid {
+            println!("YES");
+        } else {
+            println!("NO");
+        }
+    }
+}
